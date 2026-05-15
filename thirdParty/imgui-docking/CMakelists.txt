@@ -11,4 +11,4 @@ target_sources(imgui PRIVATE
 "${CMAKE_CURRENT_SOURCE_DIR}/imgui/imgui_widgets.cpp" 
 )
 
-target_include_directories(imgui PUBLIC "${CMAKE_CURRNET_SOURCE_DIR}/imgui")
+target_include_directories(imgui PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/imgui")
