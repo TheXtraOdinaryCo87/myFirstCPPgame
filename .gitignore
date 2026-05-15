@@ -1,0 +1,10 @@
+/.vs/
+/out/
+/bin/
+/build/
+/.idea/
+/settings/
+/saves/
+
+CMakeSettings.json
+Makefile
