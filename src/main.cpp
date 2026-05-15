@@ -24,7 +24,8 @@ int main()
 
 		ImGui::Text("Hi there");
 		ImGui::Button("button");
-		
+
+		ImGui::End();
 		rlImGuiEnd();
 		EndDrawing();
 	}
