@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <imgui.h>
 #include <rlImGui.h>
+
 int main()
 {
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -17,7 +18,7 @@ int main()
 
 	std::cout << "Hello World\n";
 	std::cout << "New Repo initiated\n";
-	
+
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
@@ -30,7 +31,9 @@ int main()
 		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 		ImGui::PopStyleColor(2);
 #pragma endregion
-		DrawText("Hello World", 190, 200, 20, {255, 0, 200, 255});
+
+		DrawText("Hello World", 190, 200, 20, { 255, 0, 200, 255 });
+
 #pragma region imgui windows
 		ImGui::Begin("test");
 
@@ -54,6 +57,7 @@ int main()
 
 		ImGui::End();
 #pragma endregion
+
 #pragma region imgui
 		rlImGuiEnd();
 #pragma endregion
@@ -63,6 +67,7 @@ int main()
 #pragma region imgui
 	rlImGuiShutdown();
 #pragma endregion
+
 	CloseWindow();
 	return 0;
 }
