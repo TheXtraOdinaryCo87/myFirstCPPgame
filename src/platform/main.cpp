@@ -2,11 +2,19 @@
 #include <raylib.h>
 #include <imgui.h>
 #include <rlImGui.h>
+
+#include <gameMain.h>
+
 int main()
 {
+#if PRODUCTION_BUILD == 1
+	SetTraceLogLevel(LOG_NONE); // no log output to the console by raylib
+#endif
+
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 	InitWindow(1200, 800, "Game Window");
-	SetTargetFPS(60);
+	SetExitKey(KEY_NULL); // To Disable Esc from closing the entire window
+	SetTargetFPS(240);
 
 #pragma region imgui
 	rlImGuiSetup(true);
@@ -17,11 +25,16 @@ int main()
 
 	std::cout << "Hello World\n";
 	std::cout << "New Repo initiated\n";
+
+	if (!initGame())
+	{
+		return 0;
+	}
 	
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
-		ClearBackground(WHITE);
+		ClearBackground(BLACK);
 #pragma region imgui
 		rlImGuiBegin();
 
@@ -30,39 +43,24 @@ int main()
 		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 		ImGui::PopStyleColor(2);
 #pragma endregion
-		DrawText("Hello World", 190, 200, 20, {255, 0, 200, 255});
-#pragma region imgui windows
-		ImGui::Begin("test");
 
-		ImGui::Text("Hi there");
-		ImGui::Button("button");
-		ImGui::SameLine();
-		if (ImGui::Button("Button 2"))
+		if (!updateGame())
 		{
-			std::cout << "Second Button\n";
+			CloseWindow();
 		}
-		ImGui::End();
 
-		ImGui::Begin("test 2");
+#pragma region imgui windows
 
-		ImGui::Text("Sup'!");
-		ImGui::Separator();
-		ImGui::NewLine();
-		static float a = 0;
-		ImGui::SliderFloat("slider", &a, 0, 1);
-		ImGui::Button("button");
-
-		ImGui::End();
-#pragma endregion
-#pragma region imgui
 		rlImGuiEnd();
 #pragma endregion
 		EndDrawing();
 	}
 
+	CloseWindow();
+	closeGame();
 #pragma region imgui
 	rlImGuiShutdown();
 #pragma endregion
-	CloseWindow();
+
 	return 0;
 }
