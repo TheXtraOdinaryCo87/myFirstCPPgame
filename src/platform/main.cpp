@@ -12,7 +12,7 @@ int main()
 #endif
 
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-	InitWindow(1200, 800, "Game Window");
+	InitWindow(800, 450, "Game Window");
 	SetExitKey(KEY_NULL); // To Disable Esc from closing the entire window
 	SetTargetFPS(240);
 

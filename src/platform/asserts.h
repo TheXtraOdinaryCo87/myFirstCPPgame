@@ -39,7 +39,7 @@ void assertFuncInternal(
 
 #endif
 
-#if DEVELOPLEMT_BUILD == 1
+#if DEVELOPEMENT_BUILD == 1
 #define permaAssertDevelopement permaAssert
 #define permaAssertCommentDevelopement permaAssertComment
 
