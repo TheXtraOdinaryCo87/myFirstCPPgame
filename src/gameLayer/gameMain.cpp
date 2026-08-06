@@ -5,6 +5,7 @@
 #include <asserts.h>
 #include <assetManager.h>
 #include <gameMap.h>
+#include "helpers.h"
 
 struct GameData
 {
@@ -58,19 +59,13 @@ bool updateGame()
 
 			if (b.type != Block::air)
 			{
-				Rectangle textureUV;
-				textureUV.width = 32;
-				textureUV.height = 32;
-				textureUV.x = b.type * 32;
-				textureUV.y = 0;
-
 				DrawTexturePro(
 					assetManager.textures,
-					textureUV,
+					getTextureAtlas(b.type, 0, 32, 32),
 					{ (float)x, (float)y, 1, 1 },
 					{ 0, 0 },
 					0.f,
-					RED
+					WHITE
 				);
 			}
 		}
